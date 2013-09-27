@@ -66,6 +66,16 @@ Default value: `true`
 
 If true, then the server will log all incoming requests and the HTTP status of their result.
 
+## Running
+
+Once you've configured the web server as above, run the web server with:
+
+```js
+grunt web_server
+```
+
+Terminate the web server with `Ctrl-C`
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
