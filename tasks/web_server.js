@@ -25,8 +25,6 @@ module.exports = function(grunt) {
         "js"  : "text/javascript",
         "css" : "text/css"};
     
-    var port = 1337;
-
     var options = this.options({
       port: 1337,
       cors: true,
@@ -40,7 +38,7 @@ module.exports = function(grunt) {
 
     grunt.log.writeln('');
     grunt.log.writeln('Starting HTTP Server');
-    grunt.log.writeln('  - Listening on port ' + (''+port).green);
+    grunt.log.writeln('  - Listening on port ' + (''+ options.port).green);
     grunt.log.writeln('  - Cross-Origin Resource Sharing is ' + corsStr);
     grunt.log.writeln('  - Cache suppressor is ' + corsStr);
     grunt.log.writeln('  - Request logger is ' + corsStr);
