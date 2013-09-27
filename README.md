@@ -20,67 +20,51 @@ grunt.loadNpmTasks('grunt-web-server');
 ## The "web_server" task
 
 ### Overview
-In your project's Gruntfile, add a section named `web_server` to the data object passed into `grunt.initConfig()`.
+
+In your project's Gruntfile, add a section named `web_server` to the data
+object passed into `grunt.initConfig()`.
+
+**Please take special note of the `foo: "bar"` property below. For some reason an extra key with a non-object value is necessary for things to work. Clearly I'm not understanding something about writing a Grunt plugin here... would appreciate a pull or note if anyone knows what I'm doing wrong.**
 
 ```js
 grunt.initConfig({
   web_server: {
     options: {
-      // Task-specific options go here.
+      cors: true,
+      port: 8000,
+      nevercache: true,
+      logRequests: true
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+    foo: 'bar' // For some reason an extra key with a non-object value is necessary
   },
 })
 ```
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.cors
+Type: `Boolean`
+Default value: `true`
 
-A string value that is used to do something with whatever.
+Whether to send Cross-Origin Resource Sharing headers.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.port
+Type: `Int`
+Default value: `1337`
 
-A string value that is used to do something else with whatever else.
+What port to server web requests on.
 
-### Usage Examples
+#### options.nevercache
+Type: `Boolean`
+Default value: `true`
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+If true, then the server will send headers to try to force the browser to request files afresh each time.
 
-```js
-grunt.initConfig({
-  web_server: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+#### options.logRequests
+Type: `Boolean`
+Default value: `true`
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  web_server: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+If true, then the server will log all incoming requests and the HTTP status of their result.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
