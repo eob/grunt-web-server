@@ -152,7 +152,7 @@ module.exports = function(grunt) {
     this.async();
   };
 
-  grunt.registerMultiTask('web_server',
+  grunt.registerMultiTask('web-server',
       "A Web Server similar to Python's SimpleHTTPServer," +
       " with Cross-Origin Resource Sharing and No-Cache options.",
       server);
