@@ -35,11 +35,17 @@ module.exports = function(grunt) {
         port = target.port;
       }
       if (typeof target.cors != 'undefined') {
-        if (target.true == true) {
+        if (target.cors == true) {
           cors = true;
         }
       }
+      if (typeof target.logRequests != 'undefined') {
+        if (target.logRequests == false) {
+          logRequests = false;
+        }
+      }
     }
+
     var corsStr = cors ? "on".green : "off".red;
     var cacheStr = nevercache ? "on".green : "off".red;
     var logStr = logRequests ? "on".green : "off".red;
