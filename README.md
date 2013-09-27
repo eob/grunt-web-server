@@ -1,6 +1,6 @@
-# grunt-http-server
+# grunt-web-server
 
-> An HTTP Server task for grunt, similar to Python's SimpleHTTPServer, with Cross-Origin Resource Sharing and No-Cache options.
+> A Web Server task for grunt similar to Python's SimpleHTTPServer, with Cross-Origin Resource Sharing and No-Cache options.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -8,23 +8,23 @@ This plugin requires Grunt `~0.4.1`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-http-server --save-dev
+npm install grunt-web-server --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-http-server');
+grunt.loadNpmTasks('grunt-web-server');
 ```
 
-## The "http_server" task
+## The "web_server" task
 
 ### Overview
-In your project's Gruntfile, add a section named `http_server` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `web_server` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  http_server: {
+  web_server: {
     options: {
       // Task-specific options go here.
     },
@@ -56,7 +56,7 @@ In this example, the default options are used to do something with whatever. So 
 
 ```js
 grunt.initConfig({
-  http_server: {
+  web_server: {
     options: {},
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
@@ -70,7 +70,7 @@ In this example, custom options are used to do something else with whatever else
 
 ```js
 grunt.initConfig({
-  http_server: {
+  web_server: {
     options: {
       separator: ': ',
       punctuation: ' !!!',
@@ -86,4 +86,5 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+*   *2013-09-27* Initial release.

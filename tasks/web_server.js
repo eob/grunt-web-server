@@ -1,6 +1,6 @@
 /*
- * grunt-http-server
- * https://github.com/eob/grunt-http-server
+ * grunt-web-server
+ * https://github.com/eob/grunt-web-server
  *
  * Copyright (c) 2013 Ted Benson
  * Licensed under the MIT license.
@@ -152,8 +152,8 @@ module.exports = function(grunt) {
     this.async();
   };
 
-  grunt.registerMultiTask('http_server',
-      "An HTTP Server task for grunt, similar to Python's SimpleHTTPServer," +
+  grunt.registerMultiTask('web_server',
+      "A Web Server similar to Python's SimpleHTTPServer," +
       " with Cross-Origin Resource Sharing and No-Cache options.",
       server);
 

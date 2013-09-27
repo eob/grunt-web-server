@@ -1,8 +1,8 @@
 {
-  "name": "grunt-http-server",
-  "description": "An HTTP Server task for grunt, similar to Python's SimpleHTTPServer, with Cross-Origin Resource Sharing and No-Cache options.",
+  "name": "grunt-web-server",
+  "description": "A Web Server task similar to Python's SimpleHTTPServer, with Cross-Origin Resource Sharing and No-Cache options.",
   "version": "1.0.0",
-  "homepage": "https://github.com/eob/grunt-http-server",
+  "homepage": "https://github.com/eob/grunt-web-server",
   "author": {
     "name": "Ted Benson",
     "email": "eob@csail.mit.edu",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/eob/grunt-http-server.git"
+    "url": "git://github.com/eob/grunt-web-server.git"
   },
   "bugs": {
-    "url": "https://github.com/eob/grunt-http-server/issues"
+    "url": "https://github.com/eob/grunt-web-server/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/eob/grunt-http-server/blob/master/LICENSE-MIT"
+      "url": "https://github.com/eob/grunt-web-server/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
