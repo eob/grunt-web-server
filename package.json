@@ -1,7 +1,7 @@
 {
   "name": "grunt-web-server",
   "description": "A Web Server task similar to Python's SimpleHTTPServer, with Cross-Origin Resource Sharing and No-Cache options.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://github.com/eob/grunt-web-server",
   "author": {
     "name": "Ted Benson",

@@ -26,29 +26,17 @@ module.exports = function(grunt) {
         "css" : "text/css"};
     
     var port = 1337;
-    var cors = true;
-    var nevercache = true;
-    var logRequests = true;
 
-    if (typeof target != 'undefined') {
-      if (typeof target.port != 'undefined') {
-        port = target.port;
-      }
-      if (typeof target.cors != 'undefined') {
-        if (target.cors == true) {
-          cors = true;
-        }
-      }
-      if (typeof target.logRequests != 'undefined') {
-        if (target.logRequests == false) {
-          logRequests = false;
-        }
-      }
-    }
+    var options = this.options({
+      port: 1337,
+      cors: true,
+      nevercache: true,
+      logRequests: true
+    });
 
-    var corsStr = cors ? "on".green : "off".red;
-    var cacheStr = nevercache ? "on".green : "off".red;
-    var logStr = logRequests ? "on".green : "off".red;
+    var corsStr = options.cors ? "on".green : "off".red;
+    var cacheStr = options.nevercache ? "on".green : "off".red;
+    var logStr = options.logRequests ? "on".green : "off".red;
 
     grunt.log.writeln('');
     grunt.log.writeln('Starting HTTP Server');
@@ -60,12 +48,12 @@ module.exports = function(grunt) {
   
     var buildHeaderDict = function() {
       var headers = {}
-      if (cors) {
+      if (options.cors) {
         headers['Access-Control-Allow-Headers'] = 'x-requested-with';
         headers['Access-Control-Allow-Methods'] = 'GET, PUT, POST, HEAD, OPTIONS';
         headers['Access-Control-Allow-Origin'] = '*';
       }
-      if (nevercache) {
+      if (options.nevercache) {
         headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
         headers['Pragma'] = 'no-cache';
         headers['Expires'] = '0';
@@ -88,7 +76,7 @@ module.exports = function(grunt) {
         res.writeHead(404, headers);
         res.write('404 Not Found\n');
         res.end();
-        if (logRequests) {
+        if (options.logRequests) {
           grunt.log.writeln(('[404] ' + filename).red);
         }
         return;
@@ -96,7 +84,7 @@ module.exports = function(grunt) {
     
       if (stats.isFile()) {
         // path exists, is a file
-        if (logRequests) {
+        if (options.logRequests) {
           grunt.log.writeln(('[200] ' + filename));
         }
         var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
@@ -105,7 +93,7 @@ module.exports = function(grunt) {
         var fileStream = fs.createReadStream(filename);
         fileStream.pipe(res);
       } else if (stats.isDirectory()) {
-        if (logRequests) {
+        if (options.logRequests) {
           grunt.log.writeln(('[200] <Directory> ' + filename).yellow);
         }
         var files = fs.readdirSync(filename);
@@ -146,13 +134,13 @@ module.exports = function(grunt) {
         // Don't follow symlinks for now
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.write('500 Internal server error\n');
-        if (logRequests) {
+        if (options.logRequests) {
           grunt.log.writeln(('[500] <Symlink> ' + filename).red);
         }
         res.end();
         // This is a test
       }
-    }).listen(port);
+    }).listen(options.port);
 
     // Keep it alive
     this.async();
