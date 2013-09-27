@@ -61,8 +61,8 @@ module.exports = function(grunt) {
 
     http.createServer(function(req, res) {
  
-      var uri = url.parse(req.url).pathname;
-      var filename = path.join(process.cwd(), unescape(uri));
+      var uri = unescape(url.parse(req.url).pathname);
+      var filename = path.join(process.cwd(), uri);
       var stats;
       var headers = buildHeaderDict();
 
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
         res.write('404 Not Found\n');
         res.end();
         if (options.logRequests) {
-          grunt.log.writeln(('[404] ' + filename).red);
+          grunt.log.writeln(('[404] ' + uri).red);
         }
         return;
       }
@@ -83,7 +83,7 @@ module.exports = function(grunt) {
       if (stats.isFile()) {
         // path exists, is a file
         if (options.logRequests) {
-          grunt.log.writeln(('[200] ' + filename));
+          grunt.log.writeln(('[200] ' + uri));
         }
         var mimeType = mimeTypes[path.extname(filename).split(".")[1]];
         headers['Content-Type'] = mimeType;
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
         fileStream.pipe(res);
       } else if (stats.isDirectory()) {
         if (options.logRequests) {
-          grunt.log.writeln(('[200] <Directory> ' + filename).yellow);
+          grunt.log.writeln(('[200] <Directory> ' + uri).yellow);
         }
         var files = fs.readdirSync(filename);
         var resp = "<h2>" + filename + "</h2>";
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
           if (base[base.length - 1] != '/') {
             base += "/";
           }
-          var uribase = unescape(uri);
+          var uribase = uri;
           if (uribase[uribase.length - 1] != '/') {
             uribase += "/";
           }
@@ -133,7 +133,7 @@ module.exports = function(grunt) {
         res.writeHead(500, {'Content-Type': 'text/plain'});
         res.write('500 Internal server error\n');
         if (options.logRequests) {
-          grunt.log.writeln(('[500] <Symlink> ' + filename).red);
+          grunt.log.writeln(('[500] <Symlink> ' + uri).red);
         }
         res.end();
         // This is a test
