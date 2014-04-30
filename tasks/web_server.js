@@ -22,6 +22,8 @@ module.exports = function(grunt) {
         "jpeg": "image/jpeg",
         "jpg" : "image/jpeg",
         "png" : "image/png",
+        "svg" : "image/svg+xml",                                
+        "svgz": "image/svg+xml",        
         "js"  : "text/javascript",
         "css" : "text/css"};
     
