@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         "jpg" : "image/jpeg",
         "png" : "image/png",
         "js"  : "text/javascript",
-        "svg: : "image/svg+xml",
+        "svg" : "image/svg+xml",
         "css" : "text/css"};
     
     var options = this.options({
